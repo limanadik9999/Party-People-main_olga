@@ -77,7 +77,7 @@ def account_setting(request):
     context = {'form': form}
     return render(request, 'account/setting.html', context)
 
-#### creating a new event
+#### creating a new event and this is for learning purpose as well
 @login_required(login_url = '/')
 def new_event(request):
     user_set = User.objects.get(id=request.user.id)
