@@ -1,6 +1,7 @@
+// updated //
 {% extends 'base.html' %}
 {% load static %}
-{% block title %} Диалог с {{friend.first_name}} {{friend.last_name}} {% endblock %}
+{% block title %} Dialog with {{friend.first_name}} {{friend.last_name}} {% endblock %}
 {% block style %}
 <link href="{% static 'css/dialogs/dialog.css' %}" rel="stylesheet">
 {% endblock %}
@@ -11,7 +12,7 @@
       <div class="main col-12 col-sm-12 col-md-10 col-lg-8 col-xl-6 ">
         <div id='message_block' class="messages">
           {% if messages2 %}
-            <a href="#" id="previous_messages">Предыдущие сообщения</a>
+            <a href="#" id="previous_messages">Proir messages</a>
           {% endif %}
           {% for message in sort_messages %}
             {% if message.sender == request.user %}
@@ -23,7 +24,7 @@
                     <div class="wordwrap textowerflow">
                       {{message.message_text|linebreaks|urlizetrunc:30}}
                     </div>
-                    <a class="close delete_message pb-1" href="#" data-id="message{{message.id}}" data-action="{{message.id}}" title="Удалить">
+                    <a class="close delete_message pb-1" href="#" data-id="message{{message.id}}" data-action="{{message.id}}" title="Delete">
                       <span aria-hidden="true" class="text-danger m-1" >&times;</span>
                     </a>
                   </div>
@@ -35,7 +36,7 @@
                     <div class="wordwrap textowerflow">
                       {{message.message_text|linebreaks|urlizetrunc:30}}
                     </div>
-                    <a class="close delete_message pb-1" href="#" data-id="message{{message.id}}" data-action="{{message.id}}" title="Удалить">
+                    <a class="close delete_message pb-1" href="#" data-id="message{{message.id}}" data-action="{{message.id}}" title="Delete">
                       <span aria-hidden="true" class="text-danger m-1" >&times;</span>
                     </a>
                   </div>
@@ -47,9 +48,9 @@
           <form id="leave_message" enctype="multipart/form-data" class="form-inline mt-2">
             {% csrf_token %}
             <textarea name="message_text" id="message_text" rows="2" maxlength="500"></textarea>
-            <button type="submit" name="button" class="btn-primary">Отправить</button>
+            <button type="submit" name="button" class="btn-primary">Send</button>
           </form>
-        <!-- <a href="{% url 'dialogs:messages' %}">Назад</a> -->
+        <!-- <a href="{% url 'dialogs:messages' %}">Back</a> -->
       </div>
       </div>
     </div>

@@ -1,7 +1,8 @@
+// updated //
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %} Настройки аккаунта {% endblock %}
+{% block title %} Account settings {% endblock %}
 
 {% block style %}
 <link href="{% static 'css/posts/edit_post.css' %}" rel="stylesheet">
@@ -20,10 +21,10 @@
          <small class="text-danger">{{ field.errors }}</small>
         </div>
        {% endfor %}
-       <button type="submit" name="button" class="btn btn-block btn-primary">Сохранить</button>
+       <button type="submit" name="button" class="btn btn-block btn-primary">Save</button>
      </form>
      <hr>
-     <a href="{% url 'account:user_account' %}" class="btn btn-danger float-right">Отмена</a>
+     <a href="{% url 'account:user_account' %}" class="btn btn-danger float-right">Cancel</a>
    </div>
    </div>
  </div>

@@ -1,6 +1,7 @@
+// updated //
 {% extends 'base.html' %}
 {% load static %}
-{% block title %} Понравившиеся новости {% endblock %}
+{% block title %} Liked events {% endblock %}
 {% block style %}
 <link href="{% static 'css/posts/post_columns.css' %}" rel="stylesheet">
 <link href="{% static 'css/posts/post_img.css' %}" rel="stylesheet">
@@ -12,9 +13,9 @@
       <div class="col-md-2 sidenav">
         <div class="category-wrap">
           <ul>
-            <li><a href="{% url 'posts:news' %}">Все новости</a></li>
-            <li class="active"><a href="{% url 'posts:like_news' %}">Понравившиеся</a></li>
-            <li><a href="{% url 'posts:friend_news' %}">Ваши новости</a></li>
+            <li><a href="{% url 'posts:news' %}">All events</a></li>
+            <li class="active"><a href="{% url 'posts:like_news' %}">Liked</a></li>
+            <li><a href="{% url 'posts:friend_news' %}">Your events</a></li>
           </ul>
         </div>
       </div>
@@ -145,12 +146,12 @@
             <ul class="pagination pagination-lg justify-content-center">
               {% if posts.has_previous %}
                 <li class="page-item">
-                  <a class="page-link" href="?page={{ posts.previous_page_number }}">Назад</a>
+                  <a class="page-link" href="?page={{ posts.previous_page_number }}">Back</a>
                 </li>
               {% endif %}
               {% if posts.has_next %}
                 <li class="page-item">
-                  <a class="page-link" href="?page={{ posts.next_page_number }}">Предыдущие</a>
+                  <a class="page-link" href="?page={{ posts.next_page_number }}">Prior</a>
                 </li>
               {% endif %}
             </ul>

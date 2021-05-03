@@ -1,3 +1,4 @@
+#updated
 from django.urls import path
 from django.contrib.auth import views as standard_views
 from . import views

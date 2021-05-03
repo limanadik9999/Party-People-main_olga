@@ -254,3 +254,4 @@ def delete_follower(request, account_id):
     follower = Follower.objects.filter(user = request.user, follower_for = user)
     follower.delete()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+## updated
