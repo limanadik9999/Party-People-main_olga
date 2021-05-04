@@ -11,7 +11,7 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 import json
 import datetime
 
-#Запрос новых сообщений
+#New messages request
 @login_required(login_url = '/')
 def post(request, username):
     companion = User.objects.get(username = username)
@@ -36,7 +36,7 @@ def post(request, username):
             content_type="application/json"
         )
 
-#Диалог авторизованного пользователя с username
+#Dialog with username
 @login_required(login_url = '/')
 def dialog(request, username):
     companion = User.objects.get(username = username)
@@ -51,7 +51,7 @@ def dialog(request, username):
     return render(request, 'dialogs/dialog.html', context)
 
 
-#Проверка на новые сообщения
+#New messages check
 @login_required(login_url = '/')
 def new_messages(request):
     messages = Message.objects.filter(reciever = request.user, is_readed = False)
@@ -73,7 +73,7 @@ def new_messages(request):
             }), content_type="application/json")
 
 
-#Отправка сообщения
+#message send
 @login_required(login_url = '/')
 def leave_message(request, reciever_name):
     reciever_user = User.objects.get(username = reciever_name)
@@ -101,7 +101,7 @@ def leave_message(request, reciever_name):
             }),
             content_type="application/json")
 
-#Удаление сообщения
+#message delete
 @login_required(login_url = '/')
 def delete_message(request, message_id):
     try:
@@ -147,7 +147,7 @@ def delete_dialog(request, companion_id):
 
 
 
-#Вывод всех диалогов пользователя
+#to show all the messages of a user
 @login_required(login_url = '/')
 def messages(request):
     messages = (Message.objects.filter(sender = request.user, sender_visibility = True) | Message.objects.filter(reciever = request.user, reciever_visibility = True)).order_by("-message_time")

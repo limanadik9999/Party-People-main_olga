@@ -1,3 +1,4 @@
+// updated //
 {% extends 'base.html' %}
 {% load static %}
 {% load thumbnail %}
@@ -24,7 +25,7 @@
         <div class="card mt-2 text-white bg-dark">
             <div class="card-header wordwrap textowerflow">
                 <a href="{% url 'account:account' event.author.id %}" class="text-white">{{ event.author.first_name }} {{ event.author.last_name }}</a>
-                <a class="close" href="{% url 'events:back' %}" title="Назад">
+                <a class="close" href="{% url 'events:back' %}" title="Back">
                   <span aria-hidden="true">&times;</span>
                 </a>
             </div>
@@ -92,7 +93,7 @@
               <form id="leave_comment" enctype="multipart/form-data" class="form-inline mb-3">
                 {% csrf_token %}
                 <textarea name="text" id="comment_text"></textarea>
-                <input type="submit" name="leave_comment" id="leave_comment_submit" value="Отправить" class="btn btn-primary">
+                <input type="submit" name="leave_comment" id="leave_comment_submit" value="Send" class="btn btn-primary">
               </form>
               <div id="comment_block">
                 {% for comment in event.event_comments.all %}
@@ -106,7 +107,7 @@
                         <div class="wordwrap textowerflow">
                           {{comment.comment_text|linebreaks|urlizetrunc:30}}
                         </div>
-                        <a href="#" class="delete_comment btn btn-sm btn-primary float-right mb-1 mr-1" data-id="comment{{comment.id}}" data-action="{{comment.id}}" >Удалить</a>
+                        <a href="#" class="delete_comment btn btn-sm btn-primary float-right mb-1 mr-1" data-id="comment{{comment.id}}" data-action="{{comment.id}}" >Delete</a>
                       </div>
                     </div>
                   {% else %}
@@ -161,14 +162,14 @@
                     if (data['status'] == 'ok'){
                       var previous_action = $('#dislike_block{{ event.id }}').data('action');
                       var like_previous_action = $('#like_block{{ event.id }}').data('action');
-                      // Изменяем переменную действия.
+                      // Changing
                       $('#dislike_block{{ event.id }}').data('action', previous_action == 'dislike' ?'undislike' : 'dislike');
                       $('#like_block{{ event.id }}').data('action', 'like')
-                      // Изменяем цвет ссылки.
+                      // Changing color of link.
                       $('#dislike_block{{ event.id }}').attr('class', previous_action == 'dislike' ? 'btn btn-danger float-right ml-2' : 'btn btn-secondary float-right ml-2');
                       $('#like_block{{ event.id }}').attr('class', 'btn btn-secondary float-right ml-2');
                       //$('a.like').text(previous_action == 'like' ? 'Unlike' : 'Like');
-                      // Обновляем общее количество лайков.
+                      // Likes reload.
                       var previous_dislikes = parseInt($('#dislike_val{{ event.id }}').text());
                       $('#dislike_val{{ event.id }}').text(previous_action == 'dislike' ? previous_dislikes + 1 : previous_dislikes - 1);
                       var previous_likes = parseInt($('#like_val{{ event.id }}').text());
